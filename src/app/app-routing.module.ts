@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { UsersComponent } from './users/users.component';
+import { UserComponent } from './user/user.component';
 import { RecipesComponent } from './recipes/recipes.component'
 import { LoginComponent } from './login/login.component';
 import { FavoriteRecipesComponent } from './favorite-recipes/favorite-recipes.component';
@@ -11,7 +11,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
     { path: '', component: HomeComponent},
     { path: 'login', component: LoginComponent },
-    { path: 'users', component: UsersComponent },
+    { path: 'users', component: UserComponent },
     { path: 'recipes', component: RecipesComponent },
     { path: 'favorite-recipes', component: FavoriteRecipesComponent },
     { path: 'register', component: RegistrationComponent },
