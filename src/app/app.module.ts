@@ -33,6 +33,9 @@ import { GMapModule } from 'primeng/gmap';
 import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { PanelModule } from 'primeng/panel'
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +60,9 @@ import { PanelModule } from 'primeng/panel'
     TableModule,
     PasswordModule,
     FormsModule,
+    OverlayPanelModule,
     DividerModule,
+    SelectButtonModule,
     KeyFilterModule,
     InputMaskModule,
     AppRoutingModule,
@@ -75,7 +80,7 @@ import { PanelModule } from 'primeng/panel'
     DropdownModule,
     CalendarModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
