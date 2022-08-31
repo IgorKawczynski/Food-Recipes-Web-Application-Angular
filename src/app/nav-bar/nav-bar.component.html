@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
-    <section class="navbar">
+    <section class="navbar" onload="updateTitle()">
         <p-menubar>
 
             <ng-template pTemplate="start">
                 <button type="text" pButton label="Ingredients" (click)="op.toggle($event)"></button>
                 <p-overlayPanel [showTransitionOptions]="'120ms'" [hideTransitionOptions]="'120ms'" #op [dismissable]="true" [showCloseIcon]="true" [style]="{width: '380px'}">
                     <ng-template pTemplate>
-                        <p-table [value]="ingredients" selectionMode="single" [(selection)]="selectedIngredient"  [paginator]="true" [rows]="10">
+                        <p-table [value]="ingredients" selectionMode="single" [(selection)]="selectedIngredient" (onRowSelect)="onRowSelect($event)" [paginator]="true" [rows]="10">
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
                                     <th>Image</th>
-                                    <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                                    <th pFrozenColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-rowData let-ingredient>
@@ -24,7 +24,6 @@
                     </ng-template>
                 </p-overlayPanel>
             </ng-template>
-
 
 
             <ng-template pTemplate="mid">

@@ -26,6 +26,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit(): void {
 
     this.getIngredients();
+    this.updateTitle();
 
   }
 
@@ -35,4 +36,24 @@ export class NavBarComponent implements OnInit {
     }
     );
   }
+
+  public updateTitle() {
+    window.onblur = function () {
+      setTimeout(function() {
+        document.title = 'KSW TO GOWNO'; 
+       }, 4000
+      );
+    }
+
+    window.onfocus = function () {
+       document.title = 'TOP Recipes :)'; 
+    }
+  }
+
+  onRowSelect(event: any) {
+    this.messageService.add({severity: 'info', summary: 'Product Selected', detail: event.data.name});
+}
+
+
+
 }
