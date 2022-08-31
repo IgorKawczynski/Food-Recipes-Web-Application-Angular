@@ -1,2 +1,49 @@
-<p-panel header="Custom Header" styleClass="dark-panel">es </p-panel>
+<!DOCTYPE html>
+<html>
+    <section class="navbar">
+        <p-menubar>
+
+            <ng-template pTemplate="start">
+                <button type="text" pButton label="Ingredients" (click)="op.toggle($event)"></button>
+                <p-overlayPanel [showTransitionOptions]="'120ms'" [hideTransitionOptions]="'120ms'" #op [dismissable]="true" [showCloseIcon]="true" [style]="{width: '380px'}">
+                    <ng-template pTemplate>
+                        <p-table [value]="ingredients" selectionMode="single" [(selection)]="selectedIngredient"  [paginator]="true" [rows]="10">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
+                                    <th>Image</th>
+                                    <th pSortableColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-rowData let-ingredient>
+                                <tr [pSelectableRow]="rowData">
+                                    <td>{{ingredient.name}}</td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </ng-template>
+                </p-overlayPanel>
+            </ng-template>
+
+
+
+            <ng-template pTemplate="mid">
+                <img src="../../assets/images/star1.png" height="35" class="mr-2" alt="TOP logo">
+            </ng-template>
+
+
+
+            <ng-template pTemplate="end">
+                <p>
+                    <button pButton pRipple class="p-button-rounded p-button-help" type="button" *ngIf=""
+                        icon="pi pi-user" routerLink="/edit" routerLinkActive="active"></button>
+                    <button pButton pRipple class="p-button-rounded p-button-help" type="button" *ngIf=""
+                    icon="pi pi-sign-out" routerLinkActive="active" pButton label="Logout"></button>
+                </p>
+            </ng-template>
+
+
+        </p-menubar>
+    </section>
+</html>
 

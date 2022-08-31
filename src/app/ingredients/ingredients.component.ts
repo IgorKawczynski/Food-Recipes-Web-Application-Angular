@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Ingredients } from './ingredients';
+import { IngredientsService } from './ingredients.service';
 
 @Component({
   selector: 'app-ingredients',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IngredientsComponent implements OnInit {
 
-  constructor() { }
+  ingredients: Ingredients[] = [];
+  selectedIngredient: Ingredients = new Ingredients();
+
+  constructor(private ingredientsService: IngredientsService) { 
+    
+  }
 
   ngOnInit(): void {
+    this.getIngredients();
+    console.log(this.getIngredients())
   }
+
+  public getIngredients(): void {
+    this.ingredientsService.getIngredients().subscribe( (response:any) => {
+
+      this.ingredients = response;
+      console.log(response);
+    }
+    );
+  } 
 
 }
