@@ -11,13 +11,24 @@
                             <ng-template pTemplate="header">
                                 <tr>
                                     <th pSortableColumn="name">Name<p-sortIcon field="name"></p-sortIcon></th>
-                                    <th>Image</th>
-                                    <th pFrozenColumn="price">Price <p-sortIcon field="price"></p-sortIcon></th>
+                                    <th pFrozenColumn="image">Image<p-sortIcon field="image"></p-sortIcon></th>
+                                    <th pFrozenColumn="unit">Unit <p-sortIcon field="unit"></p-sortIcon></th>
                                 </tr>
                             </ng-template>
                             <ng-template pTemplate="body" let-rowData let-ingredient>
                                 <tr [pSelectableRow]="rowData">
                                     <td>{{ingredient.name}}</td>
+                                    <td>
+                                        <div class="showcase">
+                                            <img class="object-fit-cover" *ngIf="ingredient.quantity%6==0" [src]="'assets/images/ingredients/ingredient2.jpg'" [alt]="ingredient.name"/>
+                                            <img class="object-fit-cover" *ngIf="ingredient.quantity%6==1" [src]="'assets/images/ingredients/ingredient3.jpg'" [alt]="ingredient.name"/>
+                                            <img class="object-fit-cover" *ngIf="ingredient.quantity%6==2" [src]="'assets/images/ingredients/ingredient4.jpg'" [alt]="ingredient.name"/>
+                                            <img class="object-fit-cover" *ngIf="ingredient.quantity%6==3" [src]="'assets/images/ingredients/ingredient7.jpg'" [alt]="ingredient.name"/>
+                                            <img class="object-fit-cover" *ngIf="ingredient.quantity%6==4" [src]="'assets/images/ingredients/ingredient8.jpg'" [alt]="ingredient.name"/>
+                                            <img class="object-fit-cover" *ngIf="ingredient.quantity%6==5" [src]="'assets/images/ingredients/ingredient9.jpg'" [alt]="ingredient.name"/>
+                                        </div>
+                                    </td>
+                                    <td>{{ingredient.unit}}</td>
                                 </tr>
                             </ng-template>
                         </p-table>

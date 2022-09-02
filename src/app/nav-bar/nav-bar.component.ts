@@ -5,6 +5,7 @@ import { MessageService } from 'primeng/api';
 import { MenuItem } from 'primeng/api/menuitem';
 import { IngredientsService } from '../ingredients/ingredients.service';
 import { Ingredients } from '../ingredients/ingredients';
+import { RecipesService } from '../recipes/recipes.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -20,7 +21,8 @@ export class NavBarComponent implements OnInit {
     private router: Router,
     private httpClient: HttpClient,
     private messageService: MessageService,
-    private ingredientsService: IngredientsService
+    private ingredientsService: IngredientsService,
+    private recipesService: RecipesService 
   ) { }
 
   ngOnInit(): void {
@@ -45,16 +47,25 @@ export class NavBarComponent implements OnInit {
        }, 4000
       );
     }
-
     window.onfocus = function () {
        document.title = 'TOP Recipes :)'; 
     }
   }
 
-  onRowSelect(event: any) {
+  public onRowSelect(event: any) {
     this.messageService.add({severity: 'info', summary: 'Product Selected', detail: "View recipes with " + event.data.name});
-}
+  }
 
+  public randomNumberFromInterval(min: number, max: number) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+
+
+  public getRecipes(): void {
+
+  }
 
 
 }
