@@ -33,6 +33,7 @@ export class NavBarComponent implements OnInit {
   public getIngredients(): void {
     this.ingredientsService.getIngredients().subscribe( (response:any) => {
       this.ingredients = response;
+      console.log(response)
     }
     );
   }
@@ -51,7 +52,7 @@ export class NavBarComponent implements OnInit {
   }
 
   onRowSelect(event: any) {
-    this.messageService.add({severity: 'info', summary: 'Product Selected', detail: event.data.name});
+    this.messageService.add({severity: 'info', summary: 'Product Selected', detail: "View recipes with " + event.data.name});
 }
 
 
